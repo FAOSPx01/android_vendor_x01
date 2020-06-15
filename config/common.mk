@@ -60,7 +60,12 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 endif
 
-# Lineage-specific broadcast actions whitelist
+
+# Some permissions
+PRODUCT_COPY_FILES += \
+    vendor/x01/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
+
+# x01-specific init rc file
 PRODUCT_COPY_FILES += \
     vendor/x01/config/permissions/x01-sysconfig.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/x01-sysconfig.xml
 
