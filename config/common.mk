@@ -184,18 +184,13 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/procmem
 endif
 
-# Root
-PRODUCT_PACKAGES += \
-    adb_root
-ifneq ($(TARGET_BUILD_VARIANT),user)
-ifeq ($(WITH_SU),true)
-PRODUCT_PACKAGES += \
-    su
+# One Handed mode
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.support_one_handed_mode=true
 
-PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
-    system/xbin/su
-endif
-endif
+# Disable remote keyguard animation
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.wm.enable_remote_keyguard_animation=0
 
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
