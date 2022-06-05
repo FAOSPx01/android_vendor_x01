@@ -192,6 +192,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.wm.enable_remote_keyguard_animation=0
 
+# Clean up packages cache to avoid wrong strings and resources
+PRODUCT_COPY_FILES += \
+    vendor/x01/prebuilt/common/bin/clean_cache.sh:system/bin/clean_cache.sh
+
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     CarSystemUI \
