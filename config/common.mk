@@ -239,6 +239,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/x01/overlay/no-rro
 
 PRODUCT_PACKAGES += \
+    CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
     NetworkStackOverlay
 
