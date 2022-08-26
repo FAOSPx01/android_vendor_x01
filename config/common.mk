@@ -120,11 +120,9 @@ PRODUCT_COPY_FILES += \
     vendor/x01/prebuilt/common/etc/init/init.x01-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.x01-updater.rc
 
 # Charger
-ifeq ($(TARGET_USE_PIXEL_CHARGER),true)
 PRODUCT_PACKAGES += \
     charger_res_images \
     product_charger_res_images
-endif
 
 # Config
 PRODUCT_PACKAGES += \
