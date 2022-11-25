@@ -17,7 +17,7 @@ endif
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-3.9.1-vendorcompat \
     libprotobuf-cpp-lite-3.9.1-vendorcompat
-    
+
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 # Disable ADB authentication
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
@@ -127,6 +127,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     vendor/x01/prebuilt/common/etc/init/init.x01-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.x01-updater.rc
+# BtHelper
+PRODUCT_PACKAGES += \
+    BtHelper
 
 # Charger
 PRODUCT_PACKAGES += \
