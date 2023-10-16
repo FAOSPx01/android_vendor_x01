@@ -27,6 +27,7 @@
     <!-- Whether to show a preference item for mobile plan -->
     <bool name="config_show_mobile_plan">false</bool>
 
+
     <!-- Whether sim related information is visible to the end user. -->
     <bool name="config_show_sim_info">false</bool>
 </resources>
