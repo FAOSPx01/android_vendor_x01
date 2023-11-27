@@ -36,7 +36,11 @@ SOONG_CONFIG_x01GlobalVars += \
     disable_bluetooth_le_read_buffer_size_v2 \
     disable_bluetooth_le_set_host_feature \
     gralloc_handle_has_reserved_size \
+<<<<<<< HEAD
     gralloc_handle_has_ubwcp_format \
+=======
+    sdmcore_has_is_display_hw_available_func \
+>>>>>>> c8cd7069 (vendor: Hookup SDMCORE_HAS_IS_DISPLAY_HW_AVAILABLE_FUNC)
     target_health_charging_control_charging_path \
     target_health_charging_control_charging_enabled \
     target_health_charging_control_charging_disabled \
@@ -87,6 +91,7 @@ SOONG_CONFIG_x01QcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_EN
 SOONG_CONFIG_x01QcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
 SOONG_CONFIG_x01GlobalVars_uses_legacy_fd_fbdev := $(TARGET_USES_LEGACY_FD_FBDEV)
 SOONG_CONFIG_x01GlobalVars_uses_oplus_camera := $(TARGET_USES_OPLUS_CAMERA)
+SOONG_CONFIG_x01GlobalVars_sdmcore_has_is_display_hw_available_func := $(TARGET_SDMCORE_HAS_IS_DISPLAY_HW_AVAILABLE_FUNC)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
@@ -105,6 +110,7 @@ TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB ?= libperfmgr-ext
 TARGET_POWERSHARE_ENABLED ?= 1
 TARGET_POWERSHARE_DISABLED ?= 0
 TARGET_QTI_VIBRATOR_EFFECT_LIB ?= libqtivibratoreffect
+TARGET_SDMCORE_HAS_IS_DISPLAY_HW_AVAILABLE_FUNC ?= true
 TARGET_SURFACEFLINGER_UDFPS_LIB ?= surfaceflinger_udfps_lib
 TARGET_TRUST_USB_CONTROL_PATH ?= /proc/sys/kernel/deny_new_usb
 TARGET_TRUST_USB_CONTROL_ENABLE ?= 1
