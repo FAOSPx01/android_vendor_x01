@@ -170,6 +170,10 @@ PRODUCT_COPY_FILES += \
     vendor/x01/config/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml
 endif
 
+
+# Certification
+$(call inherit-product-if-exists, vendor/certification/config.mk)
+
 # Extra tools in x01
 PRODUCT_PACKAGES += \
     bash \
