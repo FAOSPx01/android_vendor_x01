@@ -280,3 +280,5 @@ include vendor/x01/config/version.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/x01/config/partner_gms.mk
+
+include vendor/x01/config/pixel_props.mk
