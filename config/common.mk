@@ -286,3 +286,4 @@ include vendor/x01/config/version.mk
 -include vendor/x01/config/partner_gms.mk
 
 include vendor/x01/config/pixel_props.mk
+include vendor/x01/config/packages.mk
