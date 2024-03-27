@@ -6,7 +6,7 @@
 <compatibility-matrix version="2.0" type="framework">
     <!-- Radio Config (backend) -->
     <hal format="hidl" optional="true">
-        <name>x01.hardware.radio.config</name>
+        <name>lineage.hardware.radio.config</name>
         <version>1.0-1</version>
         <interface>
             <name>IRadioConfig</name>
