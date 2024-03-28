@@ -579,7 +579,7 @@ inputdispatcher_skip_event_key {
 soong_config_module_type {
     name: "camera_needs_client_info_lib",
     module_type: "cc_defaults",
-    config_namespace: "blazeGlobalVars",
+    config_namespace: "x01GlobalVars",
     bool_variables: ["camera_needs_client_info_lib"],
     properties: [
         "cppflags",
@@ -593,6 +593,23 @@ camera_needs_client_info_lib {
         camera_needs_client_info_lib: {
             cppflags: ["-DCAMERA_NEEDS_CLIENT_INFO_LIB"],
             shared_libs: ["//hardware/oneplus:vendor.oneplus.hardware.camera@1.0"],
+        },
+    },
+}
+
+soong_config_module_type {
+    name: "needs_camera_boottime",
+    module_type: "cc_defaults",
+    config_namespace: "x01GlobalVars",
+    bool_variables: ["needs_camera_boottime"],
+    properties: ["cppflags"],
+}
+
+needs_camera_boottime {
+    name: "needs_camera_boottime_defaults",
+    soong_config_variables: {
+        needs_camera_boottime: {
+            cppflags: ["-DTARGET_CAMERA_BOOTTIME_TIMESTAMP"],
         },
     },
 }
