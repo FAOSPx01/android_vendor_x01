@@ -49,6 +49,7 @@ SOONG_CONFIG_x01GlobalVars += \
     target_health_charging_control_supports_deadline \
     target_health_charging_control_supports_toggle \
     target_init_vendor_lib \
+    target_inputdispatcher_skip_event_key \
     target_ld_shim_libs \
     target_power_libperfmgr_mode_extension_lib \
     target_powershare_path \
@@ -95,6 +96,7 @@ SOONG_CONFIG_x01GlobalVars_sdmcore_has_is_display_hw_available_func := $(TARGET_
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
+TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY ?= 0
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
 TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED ?= false
 TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE ?= false
@@ -139,6 +141,7 @@ SOONG_CONFIG_x01GlobalVars_target_trust_usb_control_enable := $(TARGET_TRUST_USB
 SOONG_CONFIG_x01GlobalVars_target_trust_usb_control_disable := $(TARGET_TRUST_USB_CONTROL_DISABLE)
 SOONG_CONFIG_x01GlobalVars_disable_bluetooth_le_read_buffer_size_v2 := $(TARGET_DISABLE_BLUETOOTH_LE_READ_BUFFER_SIZE_V2)
 SOONG_CONFIG_x01GlobalVars_disable_bluetooth_le_set_host_feature := $(TARGET_DISABLE_BLUETOOTH_LE_SET_HOST_FEATURE)
+SOONG_CONFIG_x01GlobalVars_target_inputdispatcher_skip_event_key := $(TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY)
 
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 SOONG_CONFIG_x01QcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display
