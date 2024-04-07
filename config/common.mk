@@ -174,6 +174,10 @@ endif
 # Certification
 $(call inherit-product-if-exists, vendor/certification/config.mk)
 
+# Config
+PRODUCT_PACKAGES += \
+    SimpleDeviceConfig
+
 # Extra tools in x01
 PRODUCT_PACKAGES += \
     bash \
