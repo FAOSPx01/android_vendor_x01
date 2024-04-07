@@ -33065,7 +33065,7 @@
       mmsc="http://mms2.mymobiletxt.net"
       type="default,mms"
       mvno_type="spn"
-      mvno_match_data="BLAZE WIRELESS"
+      mvno_match_data="x01 WIRELESS"
   />
 
   <apn carrier="Duet Internet"
