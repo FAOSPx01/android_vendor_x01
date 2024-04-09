@@ -61,7 +61,8 @@ SOONG_CONFIG_x01GlobalVars += \
     uses_legacy_fd_fbdev \
     uses_oplus_camera \
     needs_camera_boottime \
-    target_camera_package_name
+    target_camera_package_name \
+    camera_needs_client_info
 
 SOONG_CONFIG_NAMESPACES += lineageNvidiaVars
 SOONG_CONFIG_x01NvidiaVars += \
@@ -96,6 +97,7 @@ SOONG_CONFIG_x01GlobalVars_sdmcore_has_is_display_hw_available_func := $(TARGET_
 SOONG_CONFIG_x01GlobalVars_camera_needs_client_info_lib := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB)
 SOONG_CONFIG_x01GlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
 SOONG_CONFIG_x01GlobalVars_target_camera_package_name := $(TARGET_CAMERA_PACKAGE_NAME)
+SOONG_CONFIG_x01GlobalVars_camera_needs_client_info := $(TARGET_CAMERA_NEEDS_CLIENT_INFO)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
