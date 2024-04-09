@@ -63,7 +63,14 @@ SOONG_CONFIG_x01GlobalVars += \
     needs_camera_boottime \
     target_camera_package_name \
     camera_needs_client_info \
+<<<<<<< HEAD
     uses_nothing_camera
+=======
+    uses_nothing_camera \
+    uses_miui_camera \
+    uses_oppo_camera \
+    include_miui_camera
+>>>>>>> eed92179 (soong: Add TARGET_INCLUDES_MIUI_CAMERA)
 
 SOONG_CONFIG_NAMESPACES += lineageNvidiaVars
 SOONG_CONFIG_x01NvidiaVars += \
@@ -101,6 +108,7 @@ SOONG_CONFIG_x01GlobalVars_target_camera_package_name := $(TARGET_CAMERA_PACKAGE
 SOONG_CONFIG_x01GlobalVars_camera_needs_client_info := $(TARGET_CAMERA_NEEDS_CLIENT_INFO)
 SOONG_CONFIG_x01GlobalVars_uses_nothing_camera := $(TARGET_USES_NOTHING_CAMERA)
 SOONG_CONFIG_x01GlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS)
+SOONG_CONFIG_x01GlobalVars_include_miui_camera := $(TARGET_INCLUDES_MIUI_CAMERA)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
