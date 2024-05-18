@@ -50,9 +50,6 @@ SOONG_CONFIG_x01GlobalVars += \
     target_inputdispatcher_skip_event_key \
     target_ld_shim_libs \
     target_power_libperfmgr_mode_extension_lib \
-    target_powershare_path \
-    target_powershare_enabled \
-    target_powershare_disabled \
     target_surfaceflinger_udfps_lib \
     target_trust_usb_control_path \
     target_trust_usb_control_enable \
@@ -63,14 +60,10 @@ SOONG_CONFIG_x01GlobalVars += \
     needs_camera_boottime \
     target_camera_package_name \
     camera_needs_client_info \
-<<<<<<< HEAD
-    uses_nothing_camera
-=======
     uses_nothing_camera \
     uses_miui_camera \
     uses_oppo_camera \
     include_miui_camera
->>>>>>> eed92179 (soong: Add TARGET_INCLUDES_MIUI_CAMERA)
 
 SOONG_CONFIG_NAMESPACES += lineageNvidiaVars
 SOONG_CONFIG_x01NvidiaVars += \
@@ -125,8 +118,6 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE ?= false
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE ?= true
 TARGET_INIT_VENDOR_LIB ?= vendor_init
 TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB ?= libperfmgr-ext
-TARGET_POWERSHARE_ENABLED ?= 1
-TARGET_POWERSHARE_DISABLED ?= 0
 TARGET_QTI_VIBRATOR_EFFECT_LIB ?= libqtivibratoreffect
 TARGET_SDMCORE_HAS_IS_DISPLAY_HW_AVAILABLE_FUNC ?= true
 TARGET_SURFACEFLINGER_UDFPS_LIB ?= surfaceflinger_udfps_lib
@@ -158,6 +149,7 @@ SOONG_CONFIG_x01GlobalVars_target_trust_usb_control_disable := $(TARGET_TRUST_US
 SOONG_CONFIG_x01GlobalVars_disable_bluetooth_le_read_buffer_size_v2 := $(TARGET_DISABLE_BLUETOOTH_LE_READ_BUFFER_SIZE_V2)
 SOONG_CONFIG_x01GlobalVars_disable_bluetooth_le_set_host_feature := $(TARGET_DISABLE_BLUETOOTH_LE_SET_HOST_FEATURE)
 SOONG_CONFIG_x01GlobalVars_target_inputdispatcher_skip_event_key := $(TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY)
+SOONG_CONFIG_x01GlobalVars_target_power_libperfmgr_mode_extension_lib := $(TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB)
 
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 SOONG_CONFIG_x01QcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display

@@ -685,8 +685,6 @@ camera_needs_client_info_lib_oplus {
         },
     },
 }
-<<<<<<< HEAD
-=======
 
 soong_config_module_type {
     name: "uses_miui_camera",
@@ -737,4 +735,3 @@ include_miui_camera {
         },
     },
 }
->>>>>>> eed92179 (soong: Add TARGET_INCLUDES_MIUI_CAMERA)
