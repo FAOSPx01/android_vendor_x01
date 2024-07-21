@@ -36,6 +36,12 @@ PRODUCT_PACKAGES += \
     FontLatoOverlay \
     FontRubikOverlay
 
+<<<<<<< HEAD
 # Include Lineage LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/x01/overlay/dictionaries
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/x01/overlay/dictionaries
+=======
+# Include Blaze LatinIME dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/blaze/overlay/dictionaries
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/blaze/overlay/dictionaries
+>>>>>>> d1b1c749 (config: Move LatinIME stuff to common_mobile*.mk)
