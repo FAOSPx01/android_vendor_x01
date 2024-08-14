@@ -61,9 +61,6 @@
 
     <bool name="config_cellBroadcastAppLinks">true</bool>
 
-    <!-- Enable lockscreen rotation by default -->
-    <bool name="config_enableLockScreenRotation">true</bool>
-
     <!-- Disable stock OTA components if installed -->
     <string-array name="config_globallyDisabledComponents" translatable="false">
         <!-- Disable ambientmusic components if installed -->
