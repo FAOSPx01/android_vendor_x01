@@ -1,38 +1,71 @@
-PRODUCT_VERSION_MAJOR = 21
-PRODUCT_VERSION_MINOR = 0
+# Copyright (C) 2022-2024 ForkAospX01
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
-else
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
-endif
+ANDROID_VERSION := 15
+X01VERSION := 1.0
 
-# Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+X01_BUILD_TYPE ?= UNOFFICIAL
+X01_MAINTAINER ?= fos0g
+X01_DATE_YEAR := $(shell date -u +%Y)
+X01_DATE_MONTH := $(shell date -u +%m)
+X01_DATE_DAY := $(shell date -u +%d)
+X01_DATE_HOUR := $(shell date -u +%H)
+X01_DATE_MINUTE := $(shell date -u +%M)
+X01_BUILD_DATE := $(X01_DATE_YEAR)$(X01_DATE_MONTH)$(X01_DATE_DAY)-$(X01_DATE_HOUR)$(X01_DATE_MINUTE)
+TARGET_PRODUCT_SHORT := $(subst x01_,,$(X01_BUILD))
 
-ifndef LINEAGE_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "LINEAGE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
-        LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
+# OFFICIAL_DEVICES
+ifeq ($(X01_BUILD_TYPE), OFFICIAL)
+  LIST = $(shell cat vendor/x01/config/x01.devices)
+    ifeq ($(filter $(X01_BUILD), $(LIST)), $(X01_BUILD))
+      IS_OFFICIAL=true
+      X01_BUILD_TYPE := OFFICIAL
+    endif
+    ifneq ($(IS_OFFICIAL), true)
+      X01_BUILD_TYPE := UNOFFICIAL
+      $(error Device is not official "$(X01_BUILD)")
     endif
 endif
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE := UNOFFICIAL
-    LINEAGE_EXTRAVERSION :=
+X01_VERSION := $(X01VERSION)-$(X01_BUILD)-$(X01_BUILD_DATE)-VANILLA-$(X01_BUILD_TYPE)
+ifeq ($(WITH_GAPPS), true)
+X01_VERSION := $(X01VERSION)-$(X01_BUILD)-$(X01_BUILD_DATE)-GAPPS-$(X01_BUILD_TYPE)
 endif
+X01_MOD_VERSION :=$(ANDROID_VERSION)-$(X01VERSION)
+X01_DISPLAY_VERSION := AospX01-$(X01VERSION)-$(X01_BUILD_TYPE)
+X01_DISPLAY_BUILDTYPE := $(X01_BUILD_TYPE)
+X01_FINGERPRINT := AospX01/$(X01_MOD_VERSION)/$(TARGET_PRODUCT_SHORT)/$(X01_BUILD_DATE)
 
-ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
+# X01 System Version
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+  ro.x01.version=$(X01_DISPLAY_VERSION) \
+  ro.x01.build.status=$(X01_BUILD_TYPE) \
+  ro.modversion=$(X01_MOD_VERSION) \
+  ro.x01.build.date=$(X01_BUILD_DATE) \
+  ro.x01.buildtype=$(X01_BUILD_TYPE) \
+  ro.x01.fingerprint=$(X01_FINGERPRINT) \
+  ro.x01.device=$(X01_BUILD) \
+  org.x01.version=$(X01VERSION) \
+  ro.x01.maintainer=$(X01_MAINTAINER)
+
+# Sign Build
+ifneq (eng,$(TARGET_BUILD_VARIANT))
+ifneq (,$(wildcard vendor/x01/signing/keys/releasekey.pk8))
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/x01/signing/keys/releasekey
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.oem_unlock_supported=1
 endif
-
-LINEAGE_VERSION_SUFFIX := $(LINEAGE_BUILD_DATE)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-
-# Internal version
-LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# Display version
-LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
+ifneq (,$(wildcard vendor/x01/signing/keys/otakey.x509.pem))
+PRODUCT_OTA_PUBLIC_KEYS := vendor/x01/signing/keys/otakey.x509.pem
+endif
+endif

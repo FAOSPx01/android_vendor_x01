@@ -184,7 +184,7 @@ def is_closed(status):
     return status not in ("OPEN", "NEW", "DRAFT")
 
 
-def is_lineage_gerrit(remote_url):
+def is_x01_gerrit(remote_url):
     p = urllib.parse.urlparse(remote_url)
     return p.hostname == "review.lineageos.org"
 
@@ -641,7 +641,7 @@ def do_git_fetch_pull(args, item):
     cmd.extend(["", item["fetch"][method]["ref"]])
 
     # Try fetching from GitHub first if using lineage gerrit
-    if is_lineage_gerrit(args.gerrit):
+    if is_x01_gerrit(args.gerrit):
         if args.verbose:
             print("Trying to fetch the change from GitHub")
 
@@ -656,7 +656,7 @@ def do_git_fetch_pull(args, item):
 
     # If not using the lineage gerrit or github failed, fetch from gerrit.
     if args.verbose:
-        if is_lineage_gerrit(args.gerrit):
+        if is_x01_gerrit(args.gerrit):
             print(
                 "Fetching from GitHub didn't work, trying to fetch the change from Gerrit"
             )
